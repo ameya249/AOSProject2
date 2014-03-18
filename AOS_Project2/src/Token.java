@@ -11,15 +11,6 @@ public class Token {
         this.unfulfilledRequestsQueue = unfulfilledRequestsQueue;
     }
 
-    void sendToken() {
-        Project1.hasToken = false;
-
-    }
-
-    void receiveToken() {
-
-    }
-
     public int[] getFulfilledRequestsVector() {
         return fulfilledRequestsVector;
     }
