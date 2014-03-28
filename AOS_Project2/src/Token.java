@@ -1,6 +1,8 @@
+import java.io.Serializable;
 import java.util.Queue;
 
-public class Token {
+@SuppressWarnings("serial")
+public class Token implements Serializable {
     int[] fulfilledRequestsVector;
     Queue<Integer> unfulfilledRequestsQueue;
 
@@ -26,6 +28,22 @@ public class Token {
     public void setUnfulfilledRequestsQueue(
             Queue<Integer> unfulfilledRequestsQueue) {
         this.unfulfilledRequestsQueue = unfulfilledRequestsQueue;
+    }
+    
+    public void displayfulfilledRequestsVector()
+    {
+    	for(int i=0;i<fulfilledRequestsVector.length;i++)
+    	{
+    		System.out.print(fulfilledRequestsVector[i]+"\t");
+    	}
+    }
+    
+    public void displayQueue()
+    {
+    	for(Integer i : this.unfulfilledRequestsQueue)
+    	{
+    		System.out.println(i);
+    	}
     }
 
 }

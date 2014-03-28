@@ -18,6 +18,8 @@ public class Message1 implements Serializable {
     private int receiverId;
 
     private int scalarClock;
+    
+    public Token token;
 
     public int getScalarClock() {
         return scalarClock;
@@ -74,6 +76,15 @@ public class Message1 implements Serializable {
         this.msg = m;
         this.senderId = senderId;
         this.receiverId = Integer.MAX_VALUE;
+        
+    }
+    Message1(String m, int senderId,Token token)
+    {
+    	this.msg = m;
+        this.senderId = senderId;
+        this.receiverId = Integer.MAX_VALUE;
+        this.token= token;
+    	
     }
 
     public String getMsg() {

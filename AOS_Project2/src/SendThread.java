@@ -50,6 +50,12 @@ public class SendThread implements Runnable {
                 Project1.vectorClock.displayClock();
                 Message1 msg = Project1.messageQueue.peek();
                 if (msg.getMsg().equalsIgnoreCase("token")) {
+                	System.out.println("\n Fulfilled Requests Vector in send thread");
+                	msg.token.displayfulfilledRequestsVector();
+                	System.out.println("\n UnFulfilled Requests Queue in send thread");
+                	msg.token.displayQueue();
+                	
+                	
                     unicastMessage(msg.getReceiverId(), msg);
                     Project1.messageQueue.remove();
                     break;
@@ -57,10 +63,13 @@ public class SendThread implements Runnable {
                 synchronized (Project1.vectorClock) {
                     msg.setVectorClock(Project1.vectorClock);
                 }
+                if(!msg.getMsg().equalsIgnoreCase("token") && !msg.getMsg().equalsIgnoreCase("Bye"))
+                {
                 synchronized (Project1.vectorClock) {
                     Project1.vectorClock.sendEvent();
                     System.out.println("\nClock After Sending \t");
                     Project1.vectorClock.displayClock();
+                }
                 }
 
                 for (int id : clntSock.keySet()) {
