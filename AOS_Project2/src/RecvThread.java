@@ -2,9 +2,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.nio.ByteBuffer;
-import java.util.LinkedList;
 import java.util.Map;
-import java.util.Queue;
 import java.util.concurrent.locks.Lock;
 
 import com.sun.nio.sctp.MessageInfo;
@@ -69,16 +67,19 @@ public class RecvThread implements Runnable {
                         String messageType = receivedMsg.getMessageType();
                         int senderNodeId = receivedMsg.getSenderId();
                         System.out.println("\nMessage received from "
-                                + senderNodeId + "\t at(Self): " + currNode+"\t message type is \t"+message);
+                                + senderNodeId + "\t at(Self): " + currNode
+                                + "\t message type is \t" + message);
                         System.out
                                 .println("\nClock values received with the message");
                         synchronized (Project1.vectorClock) {
-                        	if(!message.equalsIgnoreCase("token") && !message.equalsIgnoreCase("Bye"))
-                            receivedMsg.getVectorClock().displayClock();
+                            if (!message.equalsIgnoreCase("token")
+                                    && !message.equalsIgnoreCase("Bye"))
+                                receivedMsg.getVectorClock().displayClock();
 
                             if (messageInfo != null
                                     && (message.toString().trim().length() != 0)
-                                    && (!message.equalsIgnoreCase("token"))  && (!message.equalsIgnoreCase("Bye"))) {
+                                    && (!message.equalsIgnoreCase("token"))
+                                    && (!message.equalsIgnoreCase("Bye"))) {
                                 Project1.vectorClock.receiveEvent(receivedMsg
                                         .getVectorClock().getV(), receivedMsg
                                         .getSenderId());
@@ -86,61 +87,85 @@ public class RecvThread implements Runnable {
                             System.out
                                     .println("\nVector clock after receive event.....");
                             Project1.vectorClock.displayClock();
-                            //System.out.println("\n Message received is \t"
-                                   // + message + "\n");
-                            if(receivedMsg.getMsg().equalsIgnoreCase("token"))
-                            {
-                            	System.out.println("\n Received Token fulfilledRequestsVector");
-                            	receivedMsg.token.displayfulfilledRequestsVector();
-                            	System.out.println("\n  *************Token Queue received*************");
-                            	receivedMsg.token.displayQueue();
-                            	
-                            }
+                            // System.out.println("\n Message received is \t"
+                            // + message + "\n");
+                            /*
+                             * if
+                             * (receivedMsg.getMsg().equalsIgnoreCase("token"))
+                             * { System.out .println(
+                             * "\n *************Token Received*************\n");
+                             * System.out .println(
+                             * "\n----------Fulfilled Requests Vector in the token---------\n"
+                             * ); receivedMsg.token
+                             * .displayfulfilledRequestsVector(); System.out
+                             * .println(
+                             * "\n------------Unfulfilled Requests Queue in the token------\n"
+                             * ); receivedMsg.token.displayQueue();
+                             * 
+                             * }
+                             */
                             if (receivedMsg.getMsg()
                                     .equalsIgnoreCase("request")
                                     && Project1.hasToken
-                                    && Project1.isUsingCS == false && Project1.token.getUnfulfilledRequestsQueue().isEmpty()) {
-                            	Project1.hasToken=false;
-                            	Token t = new Token(new int[Project1.no_of_nodes],
-                                        new LinkedList<Integer>());
-                            	t.setFulfilledRequestsVector(Project1.token.fulfilledRequestsVector.clone());
-                            	t.setUnfulfilledRequestsQueue(new LinkedList<Integer>(Project1.token.unfulfilledRequestsQueue));
-                            	
+                                    && Project1.isUsingCS == false
+                                    && Project1.token
+                                            .getUnfulfilledRequestsQueue()
+                                            .isEmpty()) {
+                                Project1.hasToken = false;
                                 Message1 tokenMsg = new Message1("token",
-                                        Project1.processNo,Project1.token);
-                                System.out.println("\n Token sent from non cs_exit method \n");
+                                        Project1.processNo, Project1.token);
+
                                 Project1.token.displayfulfilledRequestsVector();
-                                System.out.println("\nTestArray\n");
-                                for(int i=0; i<Project1.testArray.length;i++)
-                                	System.out.print(Project1.testArray[i]+"\t");
+
                                 tokenMsg.setReceiverId(receivedMsg
                                         .getSenderId());
                                 tokenMsg.setVectorClock(Project1.vectorClock);
+                                System.out
+                                        .println("\n Token message added to the send Queue by process "
+                                                + Project1.processNo
+                                                + " after it received a request and to be sent to process"
+                                                + receivedMsg.getSenderId()
+                                                + "\n");
                                 Project1.messageQueue.add(tokenMsg);
                             }
                             if (message.equalsIgnoreCase("token")) {
-                            	
-                            	Project1.token.fulfilledRequestsVector=receivedMsg.token.fulfilledRequestsVector.clone();
-                            	Project1.token.unfulfilledRequestsQueue=receivedMsg.token.getUnfulfilledRequestsQueue();
-                               // Project1 obj = new Project1();
-                            	System.out.println("\n *************Token received************* \n");
-                            	receivedMsg.token.displayfulfilledRequestsVector();
+
+                                Project1.token.fulfilledRequestsVector = receivedMsg.token.fulfilledRequestsVector
+                                        .clone();
+                                Project1.token.unfulfilledRequestsQueue = receivedMsg.token
+                                        .getUnfulfilledRequestsQueue();
+                                // Project1 obj = new Project1();
+                                /*
+                                 * System.out .println(
+                                 * "\n *************Token received************* \n"
+                                 * ); receivedMsg.token
+                                 * .displayfulfilledRequestsVector();
+                                 */
+                                System.out
+                                        .println("\n *************Token Received*************\n");
+                                System.out
+                                        .println("\n----------Fulfilled Requests Vector in the token---------\n");
+                                receivedMsg.token
+                                        .displayfulfilledRequestsVector();
+                                System.out
+                                        .println("\n------------Unfulfilled Requests Queue in the token------\n");
+                                receivedMsg.token.displayQueue();
                                 Project1.hasToken = true;
-                                //Project1.cs_enter();
+                                // Project1.cs_enter();
                                 Application.obj.cs_enter();
                             }
                             // condition to check if i have received BYE
                             if (messageType.equalsIgnoreCase("Bye")) {
                                 cnt++;
                                 // if i have received BYE from all
-                               
+
                             }
 
                         }
                     }
                     byteBuffer.clear();
                 }// end for
-                
+
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ArrayIndexOutOfBoundsException e) {
@@ -152,9 +177,9 @@ public class RecvThread implements Runnable {
             } finally {
                 // lock.unlock();
             }
-            
-            if (cnt == nodeCnt - 1 ) {
-        //        Thread.sleep(1000);
+
+            if (cnt == nodeCnt - 1) {
+                // Thread.sleep(1000);
                 // sock.close();
                 return;
             }

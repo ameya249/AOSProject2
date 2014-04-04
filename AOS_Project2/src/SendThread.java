@@ -44,18 +44,18 @@ public class SendThread implements Runnable {
 
         while (true) {
             while (!Project1.messageQueue.isEmpty()) {
-                // System.out.println("Size of Message Queue\t"
-                // + Project1.messageQueue.size());
+
                 System.out.println("\nClock before Sending ");
                 Project1.vectorClock.displayClock();
                 Message1 msg = Project1.messageQueue.peek();
                 if (msg.getMsg().equalsIgnoreCase("token")) {
-                	System.out.println("\n Fulfilled Requests Vector in send thread");
-                	msg.token.displayfulfilledRequestsVector();
-                	System.out.println("\n UnFulfilled Requests Queue in send thread");
-                	msg.token.displayQueue();
-                	
-                	
+                    System.out
+                            .println("\n Fulfilled Requests Vector in send thread");
+                    msg.token.displayfulfilledRequestsVector();
+                    System.out
+                            .println("\n UnFulfilled Requests Queue in send thread");
+                    msg.token.displayQueue();
+
                     unicastMessage(msg.getReceiverId(), msg);
                     Project1.messageQueue.remove();
                     break;
@@ -63,13 +63,13 @@ public class SendThread implements Runnable {
                 synchronized (Project1.vectorClock) {
                     msg.setVectorClock(Project1.vectorClock);
                 }
-                if(!msg.getMsg().equalsIgnoreCase("token") && !msg.getMsg().equalsIgnoreCase("Bye"))
-                {
-                synchronized (Project1.vectorClock) {
-                    Project1.vectorClock.sendEvent();
-                    System.out.println("\nClock After Sending \t");
-                    Project1.vectorClock.displayClock();
-                }
+                if (!msg.getMsg().equalsIgnoreCase("token")
+                        && !msg.getMsg().equalsIgnoreCase("Bye")) {
+                    synchronized (Project1.vectorClock) {
+                        Project1.vectorClock.sendEvent();
+                        System.out.println("\nClock After Sending \t");
+                        Project1.vectorClock.displayClock();
+                    }
                 }
 
                 for (int id : clntSock.keySet()) {
@@ -81,8 +81,8 @@ public class SendThread implements Runnable {
 
                             sendMessage(clntSock.get(id), msg);
                             System.out.println("\nSending message from "
-                                    + currNode + "(Self)" + " to " + id + " - "
-                                    + msg.getMsg());
+                                    + currNode + " (Self)" + " to " + id
+                                    + " - " + msg.getMsg());
 
                         } else {
                             continue;
@@ -102,12 +102,6 @@ public class SendThread implements Runnable {
 
                 msgType = Project1.messageQueue.peek().getMessageType();
                 Project1.messageQueue.remove();
-                /*
-                 * synchronized (Project1.vectorClock) {
-                 * Project1.vectorClock.sendEvent();
-                 * System.out.println("\nClock After Sending \t");
-                 * Project1.vectorClock.displayClock(); }
-                 */
 
             }
             if (msgType.equalsIgnoreCase("Bye")) {
@@ -116,36 +110,15 @@ public class SendThread implements Runnable {
 
         }
 
-        // for loop to send BYE msg to all except me
-        /*
-         * for(int id : clntSock.keySet()) {
-         * 
-         * if(id!=currNode) { try {
-         * 
-         * Message msgTerm = new Message(currNode, "Bye");
-         * 
-         * sendMessage(clntSock.get(id),msgTerm.toString());
-         * System.out.println(); System.out.println( currNode + " to " + id +
-         * " - " + "Bye"); System.out.println(); } catch
-         * (CharacterCodingException e) { e.printStackTrace(); } } } try {
-         * Thread.sleep(3000); } catch (InterruptedException e) {
-         * e.printStackTrace(); }
-         */
-
     }
 
     void unicastMessage(int sendTo, Message1 msgToSend) {
         SctpChannel clientSocket = clntSock.get(new Integer(sendTo));
-        System.out.println("\nSending token from process\t"
-                + Project1.processNo + "\t to" + sendTo);
+        System.out.println("\nSending token from process " + Project1.processNo
+                + " to " + sendTo);
         try {
             sendMessage(clientSocket, msgToSend);
-            /*
-             * synchronized (Project1.vectorClock) {
-             * Project1.vectorClock.sendEvent();
-             * System.out.println("\nClock After Sending Token \t");
-             * Project1.vectorClock.displayClock(); }
-             */
+
         } catch (CharacterCodingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
