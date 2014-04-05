@@ -27,7 +27,8 @@ public class MutualExclusionServiceImpl implements MutualExclusionService {
             }
             if (counter > 0) {
                 // System.out.println("Mutual Exclusion Violated");
-                throw new Exception("Mutual Exclusion Violated");
+                // throw new Exception("Mutual Exclusion Violated");
+                throw new MutualExclusionException("Mutual Exclusion Violated");
             } else {
                 counter++;
                 overWriteFile(counter);
