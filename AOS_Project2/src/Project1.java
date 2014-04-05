@@ -1,11 +1,15 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -36,13 +40,7 @@ public class Project1 {
 
         conn.readConfig(); // Read the config file
 
-        PrintWriter pw = new PrintWriter("./config/SharedResource.txt");
-        pw.print("");
-        pw.close();
-
-        PrintWriter pw1 = new PrintWriter("./config/mutex.txt");
-        pw1.print("0");
-        pw1.close();
+        intializeFiles();
 
         conn.processNo = Integer.parseInt(argument);
 
@@ -90,6 +88,48 @@ public class Project1 {
             e.printStackTrace();
         }
 
+    }
+
+    public static void intializeFiles() {
+        PrintWriter pw1 = null;
+        PrintWriter pw2 = null;
+        try {
+            pw1 = new PrintWriter("./config/SharedResource.txt");
+            pw2 = new PrintWriter("./config/mutex.txt");
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        pw1.print("");
+        pw1.close();
+
+        pw2.print("0");
+        pw2.close();
+
+        int numOfreq = 50;
+
+        List<String> s = new ArrayList<String>(50);
+        Random rand = new Random();
+
+        // initialize list
+        for (int i = 0; i < numOfreq; i++) {
+            s.add("");
+        }
+
+        // add 'FULL' randomly
+        for (int i = 0; i < s.size() / 2; i++) {
+            int num = rand.nextInt(50);
+            s.set(num, "FULL");
+        }
+
+        // add 'EMPTY' to remaining places
+        for (int i = 0; i < s.size(); i++) {
+            if (!s.get(i).equalsIgnoreCase("FULL")) {
+                s.set(i, "EMPTY");
+            }
+        }
+        String[] initialSlots = s.toArray(new String[0]);
+        Application.writeSlots(initialSlots);
     }
 
     public void readConfig() {
