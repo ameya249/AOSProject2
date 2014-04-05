@@ -32,6 +32,7 @@ public class MutualExclusionServiceImpl implements MutualExclusionService {
                 counter++;
                 overWriteFile(counter);
             }
+
             System.out.println("Process \t" + Project1.processNo
                     + "\t has entered CS at \t" + System.currentTimeMillis());
             Project1.isUsingCS = true;
@@ -45,6 +46,7 @@ public class MutualExclusionServiceImpl implements MutualExclusionService {
                     + Project1.processNo + " \t has been assigned to slot \t"
                     + Project1.token.nextSlot;
             Application.writeToFile(parkingDetails);
+
             Application.canexecute_cs_leave = true;
 
             try {
@@ -118,6 +120,26 @@ public class MutualExclusionServiceImpl implements MutualExclusionService {
         String parkingDetails = "Parking gate \t" + Project1.processNo
                 + "\t is done assigning parking slots";
         Application.writeToFile(parkingDetails);
+        BufferedReader br = null;
+        int counter = 0;
+        try {
+            br = new BufferedReader(new FileReader("./config/mutex.txt"));
+            String sCurrentLine;
+
+            while ((sCurrentLine = br.readLine()) != null) {
+                counter = Integer.parseInt(sCurrentLine);
+            }
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        counter--;
+        overWriteFile(counter);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         Project1.isUsingCS = false;
 
@@ -144,20 +166,7 @@ public class MutualExclusionServiceImpl implements MutualExclusionService {
                             + toGiveToken + "\n");
             Project1.hasToken = false;
         }
-        BufferedReader br = null;
-        int counter = 0;
-        try {
-            br = new BufferedReader(new FileReader("./config/mutex.txt"));
-            String sCurrentLine;
 
-            while ((sCurrentLine = br.readLine()) != null) {
-                counter = Integer.parseInt(sCurrentLine);
-            }
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        counter--;
-        overWriteFile(counter);
         Application.insideCSLeave = false;
         Application.canRaiseRequest = true;
     }

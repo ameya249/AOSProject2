@@ -1,0 +1,162 @@
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1001	 from parking gate 	0 	 has been assigned to slot 	1
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2001	 from parking gate 	1 	 has been assigned to slot 	2
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3001	 from parking gate 	2 	 has been assigned to slot 	3
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1002	 from parking gate 	0 	 has been assigned to slot 	4
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1003	 from parking gate 	0 	 has been assigned to slot 	5
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2002	 from parking gate 	1 	 has been assigned to slot 	6
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3002	 from parking gate 	2 	 has been assigned to slot 	7
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3003	 from parking gate 	2 	 has been assigned to slot 	8
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2003	 from parking gate 	1 	 has been assigned to slot 	9
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1001	 from parking gate 	0 	 has been assigned to slot 	1
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2001	 from parking gate 	1 	 has been assigned to slot 	2
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3001	 from parking gate 	2 	 has been assigned to slot 	3
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1002	 from parking gate 	0 	 has been assigned to slot 	4
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1003	 from parking gate 	0 	 has been assigned to slot 	5
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2002	 from parking gate 	1 	 has been assigned to slot 	6
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3002	 from parking gate 	2 	 has been assigned to slot 	7
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3003	 from parking gate 	2 	 has been assigned to slot 	8
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2003	 from parking gate 	1 	 has been assigned to slot 	9
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1001	 from parking gate 	0 	 has been assigned to slot 	1
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2001	 from parking gate 	1 	 has been assigned to slot 	2
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3001	 from parking gate 	2 	 has been assigned to slot 	3
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1002	 from parking gate 	0 	 has been assigned to slot 	4
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1003	 from parking gate 	0 	 has been assigned to slot 	5
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2002	 from parking gate 	1 	 has been assigned to slot 	6
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3002	 from parking gate 	2 	 has been assigned to slot 	7
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3003	 from parking gate 	2 	 has been assigned to slot 	8
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2003	 from parking gate 	1 	 has been assigned to slot 	9
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1001	 from parking gate 	0 	 has been assigned to slot 	1
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2001	 from parking gate 	1 	 has been assigned to slot 	2
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3001	 from parking gate 	2 	 has been assigned to slot 	3
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1002	 from parking gate 	0 	 has been assigned to slot 	4
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1003	 from parking gate 	0 	 has been assigned to slot 	5
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2002	 from parking gate 	1 	 has been assigned to slot 	6
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3002	 from parking gate 	2 	 has been assigned to slot 	7
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3003	 from parking gate 	2 	 has been assigned to slot 	8
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2003	 from parking gate 	1 	 has been assigned to slot 	9
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1001	 from parking gate 	0 	 has been assigned to slot 	1
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2001	 from parking gate 	1 	 has been assigned to slot 	2
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3001	 from parking gate 	2 	 has been assigned to slot 	3
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1002	 from parking gate 	0 	 has been assigned to slot 	4
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1003	 from parking gate 	0 	 has been assigned to slot 	5
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2002	 from parking gate 	1 	 has been assigned to slot 	6
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3002	 from parking gate 	2 	 has been assigned to slot 	7
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3003	 from parking gate 	2 	 has been assigned to slot 	8
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2003	 from parking gate 	1 	 has been assigned to slot 	9
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1001	 from parking gate 	0 	 has been assigned to slot 	1
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2001	 from parking gate 	1 	 has been assigned to slot 	2
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3001	 from parking gate 	2 	 has been assigned to slot 	3
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1002	 from parking gate 	0 	 has been assigned to slot 	4
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	0	 has started assigning parking slots 
+ Car No 	1003	 from parking gate 	0 	 has been assigned to slot 	5
+Parking gate 	0	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2002	 from parking gate 	1 	 has been assigned to slot 	6
+Parking gate 	1	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3002	 from parking gate 	2 	 has been assigned to slot 	7
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	2	 has started assigning parking slots 
+ Car No 	3003	 from parking gate 	2 	 has been assigned to slot 	8
+Parking gate 	2	 is done assigning parking slots
+Parking Gate 	1	 has started assigning parking slots 
+ Car No 	2003	 from parking gate 	1 	 has been assigned to slot 	9
+Parking gate 	1	 is done assigning parking slots
