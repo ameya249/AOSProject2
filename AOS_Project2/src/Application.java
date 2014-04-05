@@ -11,8 +11,9 @@ public class Application {
     static boolean canexecute_cs_leave = false;
     static boolean canTerminate = false;
     static boolean insideCSLeave = false;
+    static int carNo = (Project1.processNo + 1) * 1000;
 
-    void application_start() throws InterruptedException {
+    void application_start() throws Exception {
 
         while (true) {
             if (canRaiseRequest) {
@@ -40,7 +41,7 @@ public class Application {
         }
 
         if (canTerminate && !insideCSLeave) {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             Message1 msgTerm = new Message1("Bye", Project1.processNo); //
             msgTerm.setVectorClock(Project1.vectorClock);
             Project1.messageQueue.add(msgTerm);
@@ -49,7 +50,8 @@ public class Application {
     }
 
     static void writeToFile(String toPrint) {
-        String content = "Process No:\t" + Project1.processNo + "\t" + toPrint;
+        // String content = "Process No:\t" + Project1.processNo + "\t" +
+        // toPrint;
 
         // File file = new File("./config/SharedResource.txt");
         /*
@@ -72,7 +74,7 @@ public class Application {
         try {
             PrintWriter out = new PrintWriter(new BufferedWriter(
                     new FileWriter("./config/SharedResource.txt", true)));
-            out.println(content);
+            out.println(toPrint);
             out.close();
         } catch (IOException e) {
             e.printStackTrace();

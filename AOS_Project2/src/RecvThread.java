@@ -134,6 +134,7 @@ public class RecvThread implements Runnable {
                                         .clone();
                                 Project1.token.unfulfilledRequestsQueue = receivedMsg.token
                                         .getUnfulfilledRequestsQueue();
+                                Project1.token.nextSlot = receivedMsg.token.nextSlot;
                                 // Project1 obj = new Project1();
                                 /*
                                  * System.out .println(
@@ -172,6 +173,9 @@ public class RecvThread implements Runnable {
             } catch (NullPointerException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             } finally {

@@ -1,23 +1,54 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Queue;
 
 public class MutualExclusionServiceImpl implements MutualExclusionService {
 
     @Override
-    public void cs_enter() {
+    public void cs_enter() throws Exception {
 
         Application.canRaiseRequest = false;
+        BufferedReader br = null;
 
         if (Project1.hasToken) {
+            int counter = 0;
+            int parkingCounter = 0;
+            try {
+                br = new BufferedReader(new FileReader("./config/mutex.txt"));
+                String sCurrentLine;
+
+                while ((sCurrentLine = br.readLine()) != null) {
+                    counter = Integer.parseInt(sCurrentLine);
+                }
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            if (counter > 0) {
+                // System.out.println("Mutual Exclusion Violated");
+                throw new Exception("Mutual Exclusion Violated");
+            } else {
+                counter++;
+                overWriteFile(counter);
+            }
             System.out.println("Process \t" + Project1.processNo
                     + "\t has entered CS at \t" + System.currentTimeMillis());
             Project1.isUsingCS = true;
             String fileContent = "has entered CS at \t"
                     + System.currentTimeMillis();
-            Application.writeToFile(fileContent);
+            Project1.token.nextSlot++;
+            Application.carNo++;
+            String parkingDetails = "Parking Gate \t" + Project1.processNo
+                    + "\t has started assigning parking slots \n Car No \t"
+                    + Application.carNo + "\t from parking gate \t"
+                    + Project1.processNo + " \t has been assigned to slot \t"
+                    + Project1.token.nextSlot;
+            Application.writeToFile(parkingDetails);
             Application.canexecute_cs_leave = true;
 
             try {
-                Thread.sleep(5000);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -84,7 +115,9 @@ public class MutualExclusionServiceImpl implements MutualExclusionService {
             System.out.print("\n \t" + k);
 
         String fileContent = "has left CS at \t" + System.currentTimeMillis();
-        Application.writeToFile(fileContent);
+        String parkingDetails = "Parking gate \t" + Project1.processNo
+                + "\t is done assigning parking slots";
+        Application.writeToFile(parkingDetails);
 
         Project1.isUsingCS = false;
 
@@ -111,8 +144,32 @@ public class MutualExclusionServiceImpl implements MutualExclusionService {
                             + toGiveToken + "\n");
             Project1.hasToken = false;
         }
+        BufferedReader br = null;
+        int counter = 0;
+        try {
+            br = new BufferedReader(new FileReader("./config/mutex.txt"));
+            String sCurrentLine;
 
+            while ((sCurrentLine = br.readLine()) != null) {
+                counter = Integer.parseInt(sCurrentLine);
+            }
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        counter--;
+        overWriteFile(counter);
         Application.insideCSLeave = false;
         Application.canRaiseRequest = true;
+    }
+
+    public static void overWriteFile(int counter) {
+        try {
+            PrintWriter printWriter = new PrintWriter("./config/mutex.txt");
+            printWriter.print(counter);
+            printWriter.close();
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 }

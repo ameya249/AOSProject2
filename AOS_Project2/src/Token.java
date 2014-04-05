@@ -5,6 +5,7 @@ import java.util.Queue;
 public class Token implements Serializable {
     int[] fulfilledRequestsVector;
     Queue<Integer> unfulfilledRequestsQueue;
+    int nextSlot = 0;
 
     public Token(int[] fulfilledRequestsVector,
             Queue<Integer> unfulfilledRequestsQueue) {
@@ -29,21 +30,17 @@ public class Token implements Serializable {
             Queue<Integer> unfulfilledRequestsQueue) {
         this.unfulfilledRequestsQueue = unfulfilledRequestsQueue;
     }
-    
-    public void displayfulfilledRequestsVector()
-    {
-    	for(int i=0;i<fulfilledRequestsVector.length;i++)
-    	{
-    		System.out.print(fulfilledRequestsVector[i]+"\t");
-    	}
+
+    public void displayfulfilledRequestsVector() {
+        for (int i = 0; i < fulfilledRequestsVector.length; i++) {
+            System.out.print(fulfilledRequestsVector[i] + "\t");
+        }
     }
-    
-    public void displayQueue()
-    {
-    	for(Integer i : this.unfulfilledRequestsQueue)
-    	{
-    		System.out.println(i);
-    	}
+
+    public void displayQueue() {
+        for (Integer i : this.unfulfilledRequestsQueue) {
+            System.out.println(i);
+        }
     }
 
 }

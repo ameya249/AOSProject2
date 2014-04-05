@@ -27,8 +27,7 @@ public class Project1 {
 
     Lock lock = new ReentrantLock();
 
-    public static void main(String args[]) throws NumberFormatException,
-            IOException, InterruptedException {
+    public static void main(String args[]) throws Exception {
 
         Project1 conn = new Project1();
         String argument = args[0];
