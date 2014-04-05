@@ -1,7 +1,12 @@
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Application {
     static MutualExclusionService obj = new MutualExclusionServiceImpl();
@@ -102,4 +107,49 @@ public class Application {
         // System.out.println("Done");
     }
 
+    public static String[] readAssignedSlots() {
+        Scanner sc = null;
+        try {
+            sc = new Scanner(new FileReader("./config/parkingSlots.txt"));
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        List<String> lines = new ArrayList<String>();
+        while (sc.hasNextLine()) {
+            lines.add(sc.nextLine());
+        }
+        sc.close();
+
+        String[] arr = lines.toArray(new String[0]);
+        return arr;
+    }
+
+    public static void writeSlots(String[] slots) {
+        BufferedWriter writer = null;
+        try {
+
+            writer = new BufferedWriter(new FileWriter(
+                    "./config/parkingSlots.txt"));
+            for (int i = 0; i < slots.length; i++) {
+                writer.write(slots[i]);
+                writer.newLine();
+                writer.flush();
+            }
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (writer != null) {
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
 }

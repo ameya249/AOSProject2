@@ -5,7 +5,6 @@ import java.util.Queue;
 public class Token implements Serializable {
     int[] fulfilledRequestsVector;
     Queue<Integer> unfulfilledRequestsQueue;
-    int nextSlot = 0;
 
     public Token(int[] fulfilledRequestsVector,
             Queue<Integer> unfulfilledRequestsQueue) {

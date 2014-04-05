@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -34,6 +35,14 @@ public class Project1 {
         conn.hasToken = Boolean.parseBoolean(args[1]);
 
         conn.readConfig(); // Read the config file
+
+        PrintWriter pw = new PrintWriter("./config/SharedResource.txt");
+        pw.print("");
+        pw.close();
+
+        PrintWriter pw1 = new PrintWriter("./config/mutex.txt");
+        pw1.print("0");
+        pw1.close();
 
         conn.processNo = Integer.parseInt(argument);
 

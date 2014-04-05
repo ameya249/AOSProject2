@@ -11,10 +11,12 @@ public class MutualExclusionServiceImpl implements MutualExclusionService {
 
         Application.canRaiseRequest = false;
         BufferedReader br = null;
+        String[] currentSlots;
+        int nextAvailableSlot = 0;
 
         if (Project1.hasToken) {
             int counter = 0;
-            int parkingCounter = 0;
+
             try {
                 br = new BufferedReader(new FileReader("./config/mutex.txt"));
                 String sCurrentLine;
@@ -26,12 +28,21 @@ public class MutualExclusionServiceImpl implements MutualExclusionService {
                 e1.printStackTrace();
             }
             if (counter > 0) {
-                // System.out.println("Mutual Exclusion Violated");
-                // throw new Exception("Mutual Exclusion Violated");
                 throw new MutualExclusionException("Mutual Exclusion Violated");
             } else {
                 counter++;
                 overWriteFile(counter);
+                currentSlots = Application.readAssignedSlots();
+                for (int i = 0; i < currentSlots.length; i++) {
+                    if (currentSlots[i].trim().equalsIgnoreCase("Empty")) {
+                        nextAvailableSlot = i;
+                        currentSlots[i] = "Full";
+                        break;
+
+                    }
+
+                }
+                Application.writeSlots(currentSlots);
             }
 
             System.out.println("Process \t" + Project1.processNo
@@ -39,13 +50,12 @@ public class MutualExclusionServiceImpl implements MutualExclusionService {
             Project1.isUsingCS = true;
             String fileContent = "has entered CS at \t"
                     + System.currentTimeMillis();
-            Project1.token.nextSlot++;
             Application.carNo++;
             String parkingDetails = "Parking Gate \t" + Project1.processNo
                     + "\t has started assigning parking slots \n Car No \t"
                     + Application.carNo + "\t from parking gate \t"
                     + Project1.processNo + " \t has been assigned to slot \t"
-                    + Project1.token.nextSlot;
+                    + nextAvailableSlot;
             Application.writeToFile(parkingDetails);
 
             Application.canexecute_cs_leave = true;
@@ -113,7 +123,7 @@ public class MutualExclusionServiceImpl implements MutualExclusionService {
                 }
             }
         }
-        System.out.println("\n Queue After Adding unfulfiiled Requests");
+        System.out.println("\n Queue After Adding unfulfilled Requests");
         for (Integer k : UnfulfilledReqQueue)
             System.out.print("\n \t" + k);
 

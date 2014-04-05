@@ -134,7 +134,7 @@ public class RecvThread implements Runnable {
                                         .clone();
                                 Project1.token.unfulfilledRequestsQueue = receivedMsg.token
                                         .getUnfulfilledRequestsQueue();
-                                Project1.token.nextSlot = receivedMsg.token.nextSlot;
+
                                 // Project1 obj = new Project1();
                                 /*
                                  * System.out .println(
